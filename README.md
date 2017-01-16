@@ -21,3 +21,4 @@ Currently the genres supported are the [GTZAN dataset](http://marsyasweb.appspot
 - Rock
 
 
+Needed dependencies: Keras, Theano, LibRosa, h5py, numpy
