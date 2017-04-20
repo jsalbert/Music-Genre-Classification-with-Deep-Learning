@@ -113,5 +113,5 @@ plt.title('Scores by genre')
 plt.xticks(index + bar_width / 2, tags)
 plt.tight_layout()
 fig.autofmt_xdate()
-plt.savefig('genres_prediction.png', dpi=300)
+plt.savefig('genres_prediction.png')
 
