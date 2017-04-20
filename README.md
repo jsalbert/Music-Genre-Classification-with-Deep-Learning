@@ -39,7 +39,12 @@ Python packages necessary specified in *requirements.txt* run:
 ```
 ## Results
 
-[![Sea of Dreams - Oberhofer](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=mIDWsTwstgs)
+### Sea of Dreams - Obenhofer
+[![Sea of Dreams - Oberhofer](https://github.com/jsalbert/music-genre-classification/blob/master/figs/sea.png)](https://www.youtube.com/watch?v=mIDWsTwstgs)
+![fig_sea](https://github.com/jsalbert/music-genre-classification/blob/master/figs/seaofdreams.png) 
 
-[![Sky Full of Stars- Coldplay](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=zp7NtW_hKJI)
+### Sky Full of Stars - Coldplay
+[![Sky Full of Stars- Coldplay](https://github.com/jsalbert/music-genre-classification/blob/master/figs/sky.png)](https://www.youtube.com/watch?v=zp7NtW_hKJI) 
+![fig_sky](https://github.com/jsalbert/music-genre-classification/blob/master/figs/skyfullofstars.png) 
+
 
