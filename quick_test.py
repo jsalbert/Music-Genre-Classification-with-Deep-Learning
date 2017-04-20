@@ -9,9 +9,8 @@ import numpy as np
 from keras.utils import np_utils
 from math import floor
 from music_tagger_cnn import MusicTaggerCNN
-from sklearn.metrics import confusion_matrix
+from utils import save_data, load_dataset, save_dataset, sort_result, predict_label, extract_melgrams
 import matplotlib.pyplot as plt
-from utils import save_data, load_dataset, save_dataset, sort_result, predict_label, load_gt, plot_confusion_matrix, extract_melgrams
 
 # Parameters to set
 TEST = 1
@@ -30,19 +29,11 @@ model_name = "example_model"
 model_path = "models_trained/" + model_name + "/"
 weights_path = "models_trained/" + model_name + "/weights/"
 
-
 test_songs_list = 'list_example.txt'
-# Data Loading
 
-X_test, num_frames_test= extract_melgrams(test_songs_list, MULTIFRAMES, process_all_song=False, num_songs_genre='')
-#print X_test.shape
-#print num_frames_test.shape
 
-num_frames_test = np.array(num_frames_test)
 # Initialize model
 model = MusicTaggerCRNN(weights=None, input_tensor=(1, 96, 1366))
-#model = MusicTaggerCNN(weights='msd', input_tensor=(1, 96, 1366))
-#sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
 
 model.compile(loss='categorical_crossentropy',
               optimizer='adam',
@@ -53,9 +44,13 @@ if LOAD_WEIGHTS:
 
 #model.summary()
 
+X_test, num_frames_test= extract_melgrams(test_songs_list, MULTIFRAMES, process_all_song=False, num_songs_genre='')
+
+num_frames_test = np.array(num_frames_test)
 
 t0 = time.time()
-print 'Predicting...','\n'
+
+print '\n--------- Predicting ---------','\n'
 
 results = np.zeros((X_test.shape[0], tags.shape[0]))
 predicted_labels_mean = np.zeros((num_frames_test.shape[0], 1))
@@ -66,27 +61,29 @@ song_paths = open(test_songs_list, 'r').read().splitlines()
 previous_numFrames = 0
 n=0
 for i in range(0, num_frames_test.shape[0]):
-    print song_paths[i]
+    print 'Song number' +str(i)+ ': ' + song_paths[i]
 
     num_frames=num_frames_test[i]
-    print 'Num_frames: ', str(num_frames),'\n'
+    print 'Num_frames of 30s: ', str(num_frames),'\n'
 
     results[previous_numFrames:previous_numFrames+num_frames] = model.predict(
         X_test[previous_numFrames:previous_numFrames+num_frames, :, :, :])
 
-
-    for j in range(previous_numFrames,previous_numFrames+num_frames):
+    s_counter = 0
+    for j in range(previous_numFrames, previous_numFrames+num_frames):
         #normalize the results
         total = results[j,:].sum()
         results[j,:]=results[j,:]/total
+        print 'Percentage of genre prediction for seconds '+ str(20+s_counter*30) + ' to ' \
+            + str(20+(s_counter+1)*30) + ': '
         sort_result(tags, results[j,:].tolist())
 
         predicted_label_frames=predict_label(results[j,:])
         predicted_labels_frames[n]=predicted_label_frames
+        s_counter += 1
         n+=1
 
-
-    print '\n',"Mean of the song: "
+    print '\n', 'Mean genre of the song: '
     results_song = results[previous_numFrames:previous_numFrames+num_frames]
 
     mean=results_song.mean(0)
@@ -95,20 +92,26 @@ for i in range(0, num_frames_test.shape[0]):
     predicted_label_mean=predict_label(mean)
 
     predicted_labels_mean[i]=predicted_label_mean
-    print '\n','Predicted label: ', str(tags[predicted_label_mean]),'\n'
+    print '\n','The predicted music genre for the song is', str(tags[predicted_label_mean]),'!\n'
 
     previous_numFrames = previous_numFrames+num_frames
 
-    print '\n\n\n'
+    print '************************************************************************************************'
 
-#cnf_matrix_frames = confusion_matrix(real_labels_frames, predicted_labels_frames)
-#plot_confusion_matrix(cnf_matrix_frames, classes=tags, title='Confusion matrix (frames)')
+colors = ['b','g','c','r','m','k','y','#ff1122','#5511ff','#44ff22']
+fig, ax = plt.subplots()
+index = np.arange(tags.shape[0])
+opacity = 1
+bar_width = 0.2
+print mean
+#for g in range(0, tags.shape[0]):
+plt.bar(left=index, height=mean, width=bar_width, alpha=opacity, color=colors)
 
-#cnf_matrix_mean = confusion_matrix(real_labels_mean, predicted_labels_mean)
-#plot_confusion_matrix(cnf_matrix_mean, classes=tags, title='Confusion matrix (using mean)')
-
-
-
-
-
+plt.xlabel('Genres')
+plt.ylabel('Percentage')
+plt.title('Scores by genre')
+plt.xticks(index + bar_width / 2, tags)
+plt.tight_layout()
+fig.autofmt_xdate()
+plt.savefig('genres_prediction.png', dpi=300)
 

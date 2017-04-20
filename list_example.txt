@@ -1,2 +1,2 @@
-music/letsdance.mp3
-music/1.mp3
+music/example.mp3
+music/Oberhofer - Sea of dreams.mp3
