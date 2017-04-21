@@ -2,7 +2,7 @@
 
 ## Abstract
 
-In this project we adapt the model from [Choi et al.](https://github.com/keunwoochoi/music-auto_tagging-keras) to train a custom music genre classification system with our own genres and data. The model takes as an input the spectogram of music frames and an alyzes the image using a Convolutional Neural Network (CNN) and a Recurrent Neural Network (RNN). The output of the system is a vector of predicted genres for the song. 
+In this project we adapt the model from [Choi et al.](https://github.com/keunwoochoi/music-auto_tagging-keras) to train a custom music genre classification system with our own genres and data. The model takes as an input the spectogram of music frames and analyzes the image using a Convolutional Neural Network (CNN) plus a Recurrent Neural Network (RNN). The output of the system is a vector of predicted genres for the song. 
 
 We fine-tuned their model with a small dataset (30 songs per genre) and test it on the GTZAN dataset providing a final accuracy of 80%. 
 
@@ -31,7 +31,7 @@ Currently the genres supported are the [GTZAN dataset](http://marsyasweb.appspot
 
 ### Prerequisites
 
-We have used Keras running over Theano to perform the experiments. Was done previous to Keras 2.0, not sure if it will work with the new version. 
+We have used Keras running over Theano to perform the experiments. Was done previous to Keras 2.0, not sure if it will work with the new version. It should work on CPU and GPU. 
 - Have [pip](https://pip.pypa.io/en/stable/installing/) 
 - Suggested install: [virtualenv](https://virtualenv.pypa.io/en/stable/)
 
