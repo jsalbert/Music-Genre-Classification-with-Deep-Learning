@@ -32,20 +32,37 @@ Currently the genres supported are the [GTZAN dataset](http://marsyasweb.appspot
 ### Prerequisites
 
 We have used Keras running over Theano to perform the experiments. Was done previous to Keras 2.0, not sure if it will work with the new version. 
+- Have [pip](https://pip.pypa.io/en/stable/installing/) 
+- Suggested install: [virtualenv](https://virtualenv.pypa.io/en/stable/)
+
 Python packages necessary specified in *requirements.txt* run:
 ```
+ # Create environment
+ virtualenv env_song
+ # Activate environment
+ source env_song/bin/activate
+ # Install dependencies
  pip install -r requirements.txt
  
 ```
+
+### Example Code
+
+Fill the folder music with songs. Fill the example list with the song names. 
+```
+ python quick_test.py
+ 
+```
+
 ## Results
 
 ### Sea of Dreams - Obenhofer
-[![Sea of Dreams - Oberhofer](https://github.com/jsalbert/music-genre-classification/blob/master/figs/sea.png)](https://www.youtube.com/watch?v=mIDWsTwstgs)
-![fig_sea](https://github.com/jsalbert/music-genre-classification/blob/master/figs/seaofdreams.png) 
-![Results](https://github.com/jsalbert/music-genre-classification/blob/master/figs/output.png)
+[![Sea of Dreams - Oberhofer](https://github.com/jsalbert/Music-Genre-Classification-with-Deep-Learning/blob/master/figs/sea.png?raw=true)](https://www.youtube.com/watch?v=mIDWsTwstgs)
+![fig_sea](https://github.com/jsalbert/Music-Genre-Classification-with-Deep-Learning/blob/master/figs/seaofdreams.png?raw=true) 
+![Results](https://github.com/jsalbert/Music-Genre-Classification-with-Deep-Learning/blob/master/figs/output.png?raw=true)
 
 ### Sky Full of Stars - Coldplay
-[![Sky Full of Stars- Coldplay](https://github.com/jsalbert/music-genre-classification/blob/master/figs/sky.png)](https://www.youtube.com/watch?v=zp7NtW_hKJI) 
-![fig_sky](https://github.com/jsalbert/music-genre-classification/blob/master/figs/skyfullofstars.png) 
+[![Sky Full of Stars- Coldplay](https://github.com/jsalbert/Music-Genre-Classification-with-Deep-Learning/blob/master/figs/sky.png?raw=true)](https://www.youtube.com/watch?v=zp7NtW_hKJI) 
+![fig_sky](https://github.com/jsalbert/Music-Genre-Classification-with-Deep-Learning/blob/master/figs/skyfullofstars.png?raw=true) 
 
 
