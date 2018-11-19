@@ -56,7 +56,7 @@ Fill the folder music with songs. Fill the example list with the song names.
 
 ## Results
 
-### Sea of Dreams - Obenhofer
+### Sea of Dreams - Oberhofer
 [![Sea of Dreams - Oberhofer](https://github.com/jsalbert/Music-Genre-Classification-with-Deep-Learning/blob/master/figs/sea.png?raw=true)](https://www.youtube.com/watch?v=mIDWsTwstgs)
 ![fig_sea](https://github.com/jsalbert/Music-Genre-Classification-with-Deep-Learning/blob/master/figs/seaofdreams.png?raw=true) 
 ![Results](https://github.com/jsalbert/Music-Genre-Classification-with-Deep-Learning/blob/master/figs/output.png?raw=true)
