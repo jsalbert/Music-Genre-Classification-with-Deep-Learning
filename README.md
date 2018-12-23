@@ -1,5 +1,7 @@
 # Music Genre Classification with Deep Learning
 
+[![DOI](https://zenodo.org/badge/74898449.svg)](https://zenodo.org/badge/latestdoi/74898449)
+
 ## Abstract
 
 In this project we adapt the model from [Choi et al.](https://github.com/keunwoochoi/music-auto_tagging-keras) to train a custom music genre classification system with our own genres and data. The model takes as an input the spectogram of music frames and analyzes the image using a Convolutional Neural Network (CNN) plus a Recurrent Neural Network (RNN). The output of the system is a vector of predicted genres for the song. 
